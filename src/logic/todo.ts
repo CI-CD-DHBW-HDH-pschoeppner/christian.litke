@@ -9,7 +9,7 @@ export class TodoItem {
 
 // this function must return a unique ID every time it is called
 export function generateID(): string {
-    return uuidv4();
+  return uuidv4();
 }
 
 // make sure, that
@@ -17,7 +17,12 @@ export function generateID(): string {
 // the value isn' empty
 // the todo isn't contained in the todos array (case insensitive)
 export function validateTodo(todo: TodoItem, todos: TodoItem[]): boolean {
-  if ( !todo.id || todo.value.length > 255 || !todo.value || todos.includes(todo) ){
+  if (
+    !todo.id ||
+    todo.value.length > 255 ||
+    !todo.value.replaceAll(/\s+/g,"") || //remove whitespace to make sure "empty" todos that are only spaces don't get accepted
+    todos.some(item => item.value.toLowerCase() === todo.value.toLowerCase())
+  ) {
     return false;
   }
   return true;
@@ -30,8 +35,8 @@ export function formatTodo(todo: TodoItem): TodoItem {
   return {
     id: todo.id,
     value: capitalizedValue,
-    done: todo.done
-  }
+    done: todo.done,
+  };
 }
 
 // generate a random rgb color
