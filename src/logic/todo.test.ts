@@ -15,29 +15,29 @@ describe("Generate ID", () => {
   });
 });
 describe("Todo validation", () => {
-  let testTodoItem = new TodoItem();
+  const testTodoItem = new TodoItem();
   testTodoItem.id = generateID();
   testTodoItem.value = "Item in List";
-  let testTodoList = [testTodoItem];
+  const testTodoList = [testTodoItem];
   it("Are correct values allowed?", () => {
-    let goodItem = new TodoItem();
+    const goodItem = new TodoItem();
     goodItem.id = generateID();
     goodItem.value = "Write a good test";
     expect(validateTodo(goodItem, testTodoList)).toBe(true);
   });
   it("Are too long values not allowed?", () => {
-    let tooLong = new TodoItem();
+    const tooLong = new TodoItem();
     tooLong.id = generateID();
     tooLong.value = "x".repeat(256);
     expect(validateTodo(tooLong, testTodoList)).toBe(false);
   });
   it("Are empty values not allowed?", () => {
-    let tooEmpty = new TodoItem();
+    const tooEmpty = new TodoItem();
     tooEmpty.id = generateID();
     expect(validateTodo(tooEmpty, testTodoList)).toBe(false);
   });
   it("Are duplicate values not allowed?", () => {
-    let tooOften = new TodoItem();
+    const tooOften = new TodoItem();
     tooOften.id = generateID();
     tooOften.value = testTodoItem.value.toLowerCase(); // check with different case!
     expect(validateTodo(tooOften, testTodoList)).toBe(false);
@@ -45,17 +45,17 @@ describe("Todo validation", () => {
 });
 describe("Todo capitalisation", () => {
   it("Does an item get capitalized?", () => {
-    let testTodoItem = new TodoItem();
+    const testTodoItem = new TodoItem();
     testTodoItem.id = generateID();
     testTodoItem.value = "item";
-    let correctItem = formatTodo(testTodoItem);
+    const correctItem = formatTodo(testTodoItem);
     expect(correctItem.value).toMatch("Item");
   });
   it("Does a number stay the same?", () => {
-    let testTodoItem = new TodoItem();
+    const testTodoItem = new TodoItem();
     testTodoItem.id = generateID();
     testTodoItem.value = "12 Different things";
-    let correctItem = formatTodo(testTodoItem);
+    const correctItem = formatTodo(testTodoItem);
     expect(correctItem.value).toMatch("12 Different things");
   });
 });
