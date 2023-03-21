@@ -31,7 +31,10 @@ export function validateTodo(todo: TodoItem, todos: TodoItem[]): boolean {
 // capitalize the first letter of the todo
 export function formatTodo(todo: TodoItem): TodoItem {
   const firstChar = todo.value[0];
-  const capitalizedValue = todo.value.replace(firstChar, firstChar.toUpperCase());
+  const capitalizedValue = todo.value.replace(
+    firstChar,
+    firstChar.toUpperCase()
+  );
   return {
     id: todo.id,
     value: capitalizedValue,
