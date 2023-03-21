@@ -20,8 +20,8 @@ export function validateTodo(todo: TodoItem, todos: TodoItem[]): boolean {
   if (
     !todo.id ||
     todo.value.length > 255 ||
-    !todo.value.replaceAll(/\s+/g,"") || //remove whitespace to make sure "empty" todos that are only spaces don't get accepted
-    todos.some(item => item.value.toLowerCase() === todo.value.toLowerCase())
+    !todo.value.replaceAll(/\s+/g, "") || //remove whitespace to make sure "empty" todos that are only spaces don't get accepted
+    todos.some((item) => item.value.toLowerCase() === todo.value.toLowerCase())
   ) {
     return false;
   }
