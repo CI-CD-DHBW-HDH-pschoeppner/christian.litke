@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
+import { v4 as uuidv4 } from "uuid";
 
 export class TodoItem {
   id = "";
@@ -9,7 +10,7 @@ export class TodoItem {
 // this function must return a unique ID every time it is called
 export function generateID(): string {
     // TODO: implement
-    return ""
+    return uuidv4();
 }
 
 // make sure, that
