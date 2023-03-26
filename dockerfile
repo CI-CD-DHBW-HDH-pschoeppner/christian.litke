@@ -9,8 +9,10 @@ apt-get install -y nodejs
 RUN npm install -g npm@latest
 WORKDIR /Klausur
 RUN ls -la
+# Hier fehlt ein install der Dependencies (npm install), daher geht das leider nicht
 RUN npm run build
 
 ARG buildarg
 
+# Ich bin mir nicht ganz sicher, was du hier ausführen möchtest.
 CMD [ "-parameter=test" ]
